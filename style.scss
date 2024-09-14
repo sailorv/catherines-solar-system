@@ -1,0 +1,315 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
+:root {
+    /* Fonts */
+    --font-display: "Major Mono Display";
+    --font-body: "Courier New";
+    /* Colors */
+    --color-black: #121;
+    --color-primary: lime;
+    --color-secondary: green;
+    /* Spacing */
+    --sp-base: 8px;
+    --mobile-breakpoint: 380px;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-black);
+    color: var(--color-primary);
+    justify-content: space-between;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: lowercase;
+    color: var(--color-primary);
+}
+
+h1, h3 {
+    text-shadow: 0 0 5px var(--color-secondary), 0 0 5px var(--color-secondary), 0 0 5px var(--color-secondary);
+}
+
+a {
+    color: var(--color-primary)''
+}
+
+/* Header */
+header {
+    border: solid 1px var(--color-primary);
+    text-align: center;
+    flex-grow: 1;
+}
+
+.solar-system-overview {
+    text-align: left;
+    position: relative;
+    border: solid 1px var(--color-primary);
+
+    h2 {
+        text-align: center;
+    }
+
+    .image {
+        /* https://commons.wikimedia.org/wiki/File:Planets2013-unlabeled.jpg */
+        background-image: url('images/solar-system.jpg');
+        mix-blend-mode: lighten;
+        background-repeat: no-repeat;
+        width: 100%;
+        display: block;
+        height: 200px;
+        background-size: cover;
+        margin: 0 auto;
+        border-bottom: solid 1px var(--color-primary);
+    }
+}
+
+/* Navigation */
+.nav-wrapper {
+    border: solid 1px var(--color-primary);
+
+    h3 {
+        background-color: var(--color-primary);
+        text-shadow: none;
+        margin: 0;
+        padding: 20px 0;
+        color: var(--color-black);
+    }
+
+    a {
+        color: var(--color-primary);
+        background-color: var(--color-black);
+        display: block;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 2px;
+    
+        &:before {
+            content: "> ";
+            margin-left: 10px;
+        }
+    
+        &:hover {
+            background-color: var(--color-primary);
+            color: var(--color-black);
+    
+            &:before {
+                content: "> ";
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+ul.nav {
+    display: none;
+    text-align: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    > ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &.visible {
+        display: block;
+    }
+
+    li {
+        list-style-type: none;
+        margin: 0;
+        padding: var(--sp-base);
+        border-bottom: solid 1px var(--color-primary);
+    }
+}
+
+section.planets,
+section.moons,
+section.solar-system-objects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-base);
+    display: none;
+    box-sizing: border-box;
+
+    &.visible {
+        display: block;
+    }
+
+    h2 {
+        width: 100%;
+        text-align: left;
+        background-color: var(--color-primary);
+        color: var(--color-black);
+        margin: var(--sp-base) 0 0 0;
+        height: fit-content;
+        font-size: 11pt;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+
+    article {
+        padding: var(--sp-base);
+        box-sizing: border-box;
+        border: solid 1px var(--color-primary);
+        position: relative;
+        overflow: hidden;
+        display: none;
+
+        &.visible {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Testing for Mobile */
+.nav-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+
+    .explore-object {
+
+        &:before {
+            content: '\eba5';
+            font-family: 'Material Symbols Outlined';
+            transform: rotate(45deg);
+            font-size: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: -10px;
+            float: left;
+        }
+    }
+}
+
+article {
+    min-height: 216px;
+
+    .image {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-color: transparent;
+        display: block;
+        order: 2;
+        position: relative;
+        width: 200px;
+        height:200px;
+    }
+
+    &.planet .image {
+        display: block;
+        order: 0;
+        position: absolute;
+        z-index: -1;
+        right: -4px;
+    }
+
+    > h3 {
+        order: 1;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    > p {
+        display:flex; 
+        order: 3;
+    }
+
+    > ul {
+        order: 2;
+        margin: 0;
+        padding: 10px;
+        list-style: ">";
+        width: calc(100% - 180px);
+
+        > li {
+            margin-bottom: 8px;
+        }
+    }
+}
+
+/* All Images with Credits */
+/* Source: https://commons.wikimedia.org/wiki/File:Transparent_Mercury.png*/
+.mercury .image {
+    background-image: url('images/mercury.png');
+}
+/* Source: https://commons.wikimedia.org/wiki/File:Venus_globe_-_transparent_background.png */
+.venus .image {
+    background-image: url('images/venus.png');
+}
+/* https://commons.wikimedia.org/wiki/File:Earth_Western_Hemisphere_transparent_background.png */
+.earth .image {
+    background-image: url('images/earth.png');
+}
+/* https://commons.wikimedia.org/wiki/File:Mars_%2816716283421%29_-_Transparent_background.png */
+.mars .image {
+    background-image: url('images/mars.png');
+}
+/* https://commons.wikimedia.org/wiki/File:Transparent_Jupiter.png */
+.jupiter .image {
+    background-image: url('images/jupiter.png');
+}
+/* Saturn: https://commons.wikimedia.org/wiki/File:Saturnx.png */
+.saturn .image {
+    background-image: url('images/saturn.png');
+}
+/* Uranus: https://commons.wikimedia.org/wiki/File:Rings_and_Moons_Circling_Uranus.jpg */
+.uranus .image {
+    background-image: url('images/uranus.jpg');
+    mix-blend-mode: lighten;
+}
+/* https://commons.wikimedia.org/wiki/File:Transparent_Neptune.png */
+.neptune .image {
+    background-image: url('images/neptune.png');
+}
+/* https://en.wikipedia.org/wiki/Moon#/media/File:FullMoon2010.jpg */
+.earth-moon .image {
+    background-image: url('images/earth-moon.jpg');
+    mix-blend-mode: lighten;
+}
+/* https://commons.wikimedia.org/wiki/File:Titan_in_true_color.jpg */
+.titan .image {
+    background-image: url('images/titan.jpg');
+    mix-blend-mode: lighten;
+}
+/* https://commons.wikimedia.org/wiki/File:Europa-moon.jpg */
+.europa .image {
+    background-image: url('images/europa.jpg');
+    mix-blend-mode: lighten;
+}
+/* https://commons.wikimedia.org/wiki/File:Asteroid_belt_between_Mars_%26_Jupiter.PNG */
+.asteroid-belt .image {
+    background-image: url('images/asteroid-belt.png');
+    mix-blend-mode: lighten;
+}
+/*https://commons.wikimedia.org/wiki/File:Kuiperbelt.png */
+.kuiper-belt .image {
+    background-image: url('images/kuiper-belt.png');
+    mix-blend-mode: lighten;
+}
+/* https://commons.wikimedia.org/wiki/File:Comet_Hale_Bopp.jpg */
+.comets .image {
+    background-image: url('images/comets.jpg');
+    mix-blend-mode: lighten;
+}
