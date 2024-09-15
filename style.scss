@@ -1,18 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
 :root {
     /* Fonts */
-    --font-primary: "Share Tech Mono", monospace;
+    --font-primary: "VT323", monospace;
     /* Colors */
-    --color-black: #121;
+    --color-black: #000;
     --color-black-transparent: rgba(17,34,17,.6);
-    --color-primary: lime;
-    --color-secondary: green;
-    --color-tertiary: rgba(0,51,0);
+    --color-primary: #da8aff;
+    --color-secondary: #52077d;
+    --color-tertiary: rgba(42, 32, 66);
     /* Spacing */
     --sp-base: 8px;
-    --mobile-breakpoint: 380px;
 }
 
 @keyframes blink {
@@ -64,7 +63,7 @@ h2 {
     background: repeating-linear-gradient(
         0deg, var(--color-secondary), var(--color-secondary) 1px, var(--color-primary) 1px, var(--color-primary) 2px
     );
-    text-shadow: 0 0 5px black;
+    text-shadow: 0 0 5px var(--color-primary);
     color: var(--color-black);
     margin: var(--sp-base) 0 0 0;
     height: fit-content;
@@ -82,11 +81,16 @@ h2 {
 }
 
 h3 {
-    font-size: 14pt;
+    font-size: 16pt;
+    text-transform: uppercase;
     @media screen and (min-width: 740px) {
         margin-top: var(--sp-base);
         font-size: 20pt;
     }
+}
+
+p, ul, li {
+    font-size: 16pt;
 }
 
 a {
@@ -148,7 +152,7 @@ header {
         background: repeating-linear-gradient(
             0deg, var(--color-secondary), var(--color-secondary) 1px, var(--color-primary) 1px, var(--color-primary) 2px
         );
-        text-shadow: 0 0 5px black;
+        text-shadow: 0 0 5px var(--color-primary);
         margin: 0;
         padding: var(--sp-base) 0;
         color: var(--color-black);
