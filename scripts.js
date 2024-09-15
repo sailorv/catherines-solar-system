@@ -1,9 +1,13 @@
 // Page Elements
 const pageHeader = document.querySelector('header');
 const solarSystemOverview = document.querySelector('.solar-system-overview');
+
+// Add images
 const solarSystemImage = document.createElement('div');
 solarSystemImage.classList.add('image');
 solarSystemOverview.insertAdjacentElement('afterBegin',solarSystemImage);
+
+// Create nav element
 const nav = document.createElement('ul');
 
 // PLANET STUFF //
@@ -153,11 +157,10 @@ function showArticle(event) {
         }
     });
 
-    const linkClass = event.target.className.replace('-link', '');
+    let linkClass = event.target.className.replace('-link', '');
 
     const targetArticle = document.querySelector(`article.${linkClass}`);
     if (targetArticle) {
-        console.log(linkClass);
         targetArticle.classList.add('visible');
         const parentSection = targetArticle.closest('section');
         if (parentSection) {
@@ -165,6 +168,15 @@ function showArticle(event) {
         }
 
         // Add it to the nav
+        if (linkClass == "earth-moon") {
+            linkClass = "The Moon"
+        }
+        if (linkClass == "asteroid-belt") {
+            linkClass = "Asteroids"
+        }
+        if (linkClass == "kuiper-belt") {
+            linkClass = "KUIPER BELT"
+        }
         document.querySelector('.explore-object').innerHTML = linkClass;
         nav.classList.remove('visible');
     }
@@ -173,4 +185,20 @@ function showArticle(event) {
 // Add click event to each link in the nav
 document.querySelectorAll('.nav a').forEach(link => {
     link.addEventListener('click', showArticle);
+});
+
+// Show Mercury by default on desktop
+if (window.matchMedia("(min-width: 900px)").matches) {
+    document.querySelector('.mercury').classList.add('visible');
+    document.querySelector('.planets').classList.add('visible');
+}
+
+// Add green to images 
+const imagesList = document.querySelectorAll('article .image');
+
+imagesList.forEach(articleImage => {
+    const green = document.createElement('div');
+    green.classList.add('green');
+    articleImage.insertAdjacentElement('afterBegin', green);
+    console.log(articleImage)
 });

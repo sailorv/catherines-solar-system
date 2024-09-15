@@ -1,33 +1,89 @@
-@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 :root {
   /* Fonts */
-  --font-display: "Major Mono Display";
-  --font-body: "Courier New";
+  --font-primary: "Share Tech Mono", monospace;
   /* Colors */
   --color-black: #121;
+  --color-black-transparent: rgba(17,34,17,.6);
   --color-primary: lime;
   --color-secondary: green;
+  --color-tertiary: rgba(0,51,0);
   /* Spacing */
   --sp-base: 8px;
   --mobile-breakpoint: 380px;
 }
 
+@keyframes blink {
+  0%, 75% {
+    opacity: 1; /* Fully visible at the start and end */
+  }
+  20%, 40% {
+    opacity: 0; /* Invisible during the blink */
+  }
+}
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   background-color: var(--color-black);
   color: var(--color-primary);
   justify-content: space-between;
+  background: repeating-linear-gradient(0deg, var(--color-black), var(--color-black) 2px, var(--color-tertiary) 2px, var(--color-tertiary) 4px);
+}
+@media screen and (min-width: 900px) {
+  body {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 8px;
+  }
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
+  font-family: var(--font-primary);
   font-weight: 400;
-  text-transform: lowercase;
   color: var(--color-primary);
 }
 
-h1, h3 {
+h1 {
+  font-size: 24pt;
   text-shadow: 0 0 5px var(--color-secondary), 0 0 5px var(--color-secondary), 0 0 5px var(--color-secondary);
+}
+@media screen and (min-width: 900px) {
+  h1 {
+    font-size: 30pt;
+  }
+}
+
+h2 {
+  font-size: 11pt;
+  width: 100%;
+  text-align: left;
+  background: repeating-linear-gradient(0deg, var(--color-secondary), var(--color-secondary) 1px, var(--color-primary) 1px, var(--color-primary) 2px);
+  text-shadow: 0 0 5px black;
+  color: var(--color-black);
+  margin: var(--sp-base) 0 0 0;
+  height: fit-content;
+  padding: 2px;
+  box-sizing: border-box;
+  font-family: var(--font-primary);
+  text-transform: uppercase;
+  text-align: center;
+}
+@media screen and (min-width: 900px) {
+  h2 {
+    font-size: 14pt;
+    margin-top: 0;
+    padding: var(--sp-base);
+  }
+}
+
+h3 {
+  font-size: 14pt;
+}
+@media screen and (min-width: 900px) {
+  h3 {
+    font-size: 20pt;
+  }
 }
 
 a {
@@ -40,14 +96,21 @@ header {
   text-align: center;
   flex-grow: 1;
 }
+@media screen and (min-width: 900px) {
+  header {
+    width: 100%;
+    margin-top: calc(var(--sp-base) * 3);
+  }
+}
 
 .solar-system-overview {
   text-align: left;
   position: relative;
   border: solid 1px var(--color-primary);
 }
-.solar-system-overview h2 {
-  text-align: center;
+.solar-system-overview p {
+  padding: var(--sp-base);
+  box-sizing: border-box;
 }
 .solar-system-overview .image {
   /* https://commons.wikimedia.org/wiki/File:Planets2013-unlabeled.jpg */
@@ -61,16 +124,23 @@ header {
   margin: 0 auto;
   border-bottom: solid 1px var(--color-primary);
 }
+@media screen and (min-width: 900px) {
+  .solar-system-overview {
+    display: block !important;
+    width: 25%;
+    order: 1;
+  }
+}
 
 /* Navigation */
 .nav-wrapper {
   border: solid 1px var(--color-primary);
 }
 .nav-wrapper h3 {
-  background-color: var(--color-primary);
-  text-shadow: none;
+  background: repeating-linear-gradient(0deg, var(--color-secondary), var(--color-secondary) 1px, var(--color-primary) 1px, var(--color-primary) 2px);
+  text-shadow: 0 0 5px black;
   margin: 0;
-  padding: 20px 0;
+  padding: var(--sp-base) 0;
   color: var(--color-black);
 }
 .nav-wrapper a {
@@ -84,6 +154,7 @@ header {
 .nav-wrapper a:before {
   content: "> ";
   margin-left: 10px;
+  -webkit-font-smoothing: none;
 }
 .nav-wrapper a:hover {
   background-color: var(--color-primary);
@@ -92,6 +163,14 @@ header {
 .nav-wrapper a:hover:before {
   content: "> ";
   margin-left: 5px;
+  -webkit-font-smoothing: none;
+}
+@media screen and (min-width: 900px) {
+  .nav-wrapper {
+    width: 25%;
+    order: 2;
+    border-bottom: 0;
+  }
 }
 
 ul.nav {
@@ -118,11 +197,15 @@ ul.nav li {
   padding: var(--sp-base);
   border-bottom: solid 1px var(--color-primary);
 }
+@media screen and (min-width: 900px) {
+  ul.nav {
+    display: block;
+  }
+}
 
 section.planets,
 section.moons,
 section.solar-system-objects {
-  display: flex;
   flex-wrap: wrap;
   gap: var(--sp-base);
   display: none;
@@ -132,19 +215,7 @@ section.planets.visible,
 section.moons.visible,
 section.solar-system-objects.visible {
   display: block;
-}
-section.planets h2,
-section.moons h2,
-section.solar-system-objects h2 {
-  width: 100%;
-  text-align: left;
-  background-color: var(--color-primary);
-  color: var(--color-black);
-  margin: var(--sp-base) 0 0 0;
-  height: fit-content;
-  font-size: 11pt;
-  padding: 2px;
-  box-sizing: border-box;
+  animation: blink 0.01s ease-in-out 2;
 }
 section.planets article,
 section.moons article,
@@ -162,14 +233,32 @@ section.solar-system-objects article.visible {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  animation: blink 0.1s ease-in-out 2;
+}
+@media screen and (min-width: 900px) {
+  section.planets,
+  section.moons,
+  section.solar-system-objects {
+    order: 3;
+    width: 45%;
+  }
+  section.planets article,
+  section.moons article,
+  section.solar-system-objects article {
+    height: calc(100% - 38px);
+  }
 }
 
 /* Footer */
 footer {
   width: 100%;
-  margin: 20px 0;
-  padding: 20px 0;
+  margin: calc(var(--sp-base) * 2) 0;
   text-align: center;
+}
+@media screen and (min-width: 900px) {
+  footer {
+    order: 4;
+  }
 }
 
 /* Testing for Mobile */
@@ -177,6 +266,10 @@ footer {
   cursor: pointer;
   display: flex;
   justify-content: center;
+  font-size: 14pt;
+}
+.nav-header .explore-object {
+  text-transform: uppercase;
 }
 .nav-header .explore-object:before {
   content: "\eba5";
@@ -187,6 +280,7 @@ footer {
   margin-right: 10px;
   margin-top: -10px;
   float: left;
+  -webkit-font-smoothing: none;
 }
 
 article {
@@ -202,6 +296,7 @@ article .image {
   position: relative;
   width: 200px;
   height: 200px;
+  mix-blend-mode: exclusion;
 }
 article.planet .image {
   display: block;
@@ -228,6 +323,29 @@ article > ul {
 }
 article > ul > li {
   margin-bottom: 8px;
+}
+article:hover .image {
+  mix-blend-mode: normal;
+}
+@media screen and (min-width: 900px) {
+  article .image {
+    width: 300px;
+    height: 250px;
+    margin-top: -20px;
+  }
+  article > ul {
+    width: calc(100% - 280px);
+  }
+  article > p {
+    background-color: var(--color-black-transparent);
+  }
+}
+
+/* Moons & Objects */
+.moons .image,
+.solar-system-objects .image {
+  width: 100%;
+  background-position: center center;
 }
 
 /* All Images with Credits */
@@ -264,7 +382,6 @@ article > ul > li {
 /* Uranus: https://commons.wikimedia.org/wiki/File:Rings_and_Moons_Circling_Uranus.jpg */
 .uranus .image {
   background-image: url("images/uranus.jpg");
-  mix-blend-mode: lighten;
 }
 
 /* https://commons.wikimedia.org/wiki/File:Transparent_Neptune.png */
@@ -275,37 +392,31 @@ article > ul > li {
 /* https://en.wikipedia.org/wiki/Moon#/media/File:FullMoon2010.jpg */
 .earth-moon .image {
   background-image: url("images/earth-moon.jpg");
-  mix-blend-mode: lighten;
 }
 
 /* https://commons.wikimedia.org/wiki/File:Titan_in_true_color.jpg */
 .titan .image {
   background-image: url("images/titan.jpg");
-  mix-blend-mode: lighten;
 }
 
 /* https://commons.wikimedia.org/wiki/File:Europa-moon.jpg */
 .europa .image {
   background-image: url("images/europa.jpg");
-  mix-blend-mode: lighten;
 }
 
 /* https://commons.wikimedia.org/wiki/File:Asteroid_belt_between_Mars_%26_Jupiter.PNG */
 .asteroid-belt .image {
   background-image: url("images/asteroid-belt.png");
-  mix-blend-mode: lighten;
 }
 
 /*https://commons.wikimedia.org/wiki/File:Kuiperbelt.png */
 .kuiper-belt .image {
   background-image: url("images/kuiper-belt.png");
-  mix-blend-mode: lighten;
 }
 
 /* https://commons.wikimedia.org/wiki/File:Comet_Hale_Bopp.jpg */
 .comets .image {
   background-image: url("images/comets.jpg");
-  mix-blend-mode: lighten;
 }
 
 /*# sourceMappingURL=style.css.map */
