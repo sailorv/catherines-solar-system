@@ -119,7 +119,7 @@ celestialObjects.forEach(celestialObject => {
 
 // Refine Navigation
 const navHeader = document.createElement('h3');
-navHeader.innerHTML = `Explore <div class="explore-object"></div>`;
+navHeader.innerHTML = `Explore <div class="icon"></div> <div class="explore-object"></div>`;
 navHeader.classList.add('nav-header');
 nav.classList.add('nav');
 
@@ -188,7 +188,7 @@ document.querySelectorAll('.nav a').forEach(link => {
 });
 
 // Show Mercury by default on desktop
-if (window.matchMedia("(min-width: 900px)").matches) {
+if (window.matchMedia("(min-width: 740px)").matches) {
     document.querySelector('.mercury').classList.add('visible');
     document.querySelector('.planets').classList.add('visible');
 }
@@ -200,5 +200,4 @@ imagesList.forEach(articleImage => {
     const green = document.createElement('div');
     green.classList.add('green');
     articleImage.insertAdjacentElement('afterBegin', green);
-    console.log(articleImage)
 });

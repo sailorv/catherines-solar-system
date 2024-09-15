@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
 :root {
     /* Fonts */
@@ -32,7 +33,7 @@ body {
         0deg, var(--color-black), var(--color-black) 2px, var(--color-tertiary) 2px, var(--color-tertiary) 4px
     );
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         display: flex;
         flex-wrap: wrap;
         max-width: 1100px;
@@ -51,7 +52,7 @@ h1 {
     font-size: 24pt;
     text-shadow: 0 0 5px var(--color-secondary), 0 0 5px var(--color-secondary), 0 0 5px var(--color-secondary);
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         font-size: 30pt;
     }
 }
@@ -73,7 +74,7 @@ h2 {
     text-transform: uppercase;
     text-align: center;
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         font-size: 14pt;
         margin-top: 0;
         padding: var(--sp-base);
@@ -82,7 +83,8 @@ h2 {
 
 h3 {
     font-size: 14pt;
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
+        margin-top: var(--sp-base);
         font-size: 20pt;
     }
 }
@@ -97,7 +99,7 @@ header {
     text-align: center;
     flex-grow: 1;
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         width: 100%;
         margin-top: calc(var(--sp-base) * 3);
     }
@@ -126,16 +128,21 @@ header {
         border-bottom: solid 1px var(--color-primary);
     }
 
-    @media screen and (min-width: 900px) {
-        display: block !important; // Clean up
-        width: 25%;
+    @media screen and (min-width: 740px) {
+        display: block !important;
+        width: 30%;
         order: 1;
+
+        .image {
+            height: 150px;
+        }
     }
 }
 
 /* Navigation */
 .nav-wrapper {
     border: solid 1px var(--color-primary);
+    height: fit-content;
 
     h3 {
         background: repeating-linear-gradient(
@@ -173,7 +180,7 @@ header {
         }
     }
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         width: 25%;
         order: 2;
         border-bottom: 0;
@@ -208,7 +215,7 @@ ul.nav {
         border-bottom: solid 1px var(--color-primary);
     }
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         display: block;
     }
 }
@@ -242,9 +249,9 @@ section.solar-system-objects {
         }
     }
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         order: 3;
-        width: 45%;
+        width: 40%;
 
         article {
             height: calc(100% - 38px); // height of h2
@@ -258,7 +265,7 @@ footer {
     margin: calc(var(--sp-base) * 2) 0;
     text-align: center;
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         order: 4;
     }
 }
@@ -267,23 +274,24 @@ footer {
 .nav-header {
     cursor: pointer;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     font-size: 14pt;
-
+    .icon::before {
+        content: '\eba5';
+        font-family: 'Material Symbols Outlined';
+        transform: rotate(45deg);
+        font-size: 30px;
+        margin-left: 10px;
+        margin-top: -10px;
+        display: block;
+        width: 30px;
+        height: 30px;
+        float: left;
+        -webkit-font-smoothing: none;
+    }
     .explore-object {
         text-transform: uppercase;
-
-        &:before {
-            content: '\eba5';
-            font-family: 'Material Symbols Outlined';
-            transform: rotate(45deg);
-            font-size: 30px;
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-top: -10px;
-            float: left;
-            -webkit-font-smoothing: none;
-        }
     }
 }
 
@@ -340,14 +348,10 @@ article {
         }
     }
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 740px) {
         .image {
-            width: 300px;
-            height: 250px;
-            margin-top: -20px;
-        }
-        > ul {
-            width: calc(100% - 280px);
+            width: 200px;
+            height: 200px;
         }
         > p {
             background-color: var(--color-black-transparent);

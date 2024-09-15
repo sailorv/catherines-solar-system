@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 :root {
   /* Fonts */
   --font-primary: "Share Tech Mono", monospace;
@@ -28,7 +29,7 @@ body {
   justify-content: space-between;
   background: repeating-linear-gradient(0deg, var(--color-black), var(--color-black) 2px, var(--color-tertiary) 2px, var(--color-tertiary) 4px);
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   body {
     display: flex;
     flex-wrap: wrap;
@@ -48,7 +49,7 @@ h1 {
   font-size: 24pt;
   text-shadow: 0 0 5px var(--color-secondary), 0 0 5px var(--color-secondary), 0 0 5px var(--color-secondary);
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   h1 {
     font-size: 30pt;
   }
@@ -69,7 +70,7 @@ h2 {
   text-transform: uppercase;
   text-align: center;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   h2 {
     font-size: 14pt;
     margin-top: 0;
@@ -80,8 +81,9 @@ h2 {
 h3 {
   font-size: 14pt;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   h3 {
+    margin-top: var(--sp-base);
     font-size: 20pt;
   }
 }
@@ -96,7 +98,7 @@ header {
   text-align: center;
   flex-grow: 1;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   header {
     width: 100%;
     margin-top: calc(var(--sp-base) * 3);
@@ -124,17 +126,21 @@ header {
   margin: 0 auto;
   border-bottom: solid 1px var(--color-primary);
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   .solar-system-overview {
     display: block !important;
-    width: 25%;
+    width: 30%;
     order: 1;
+  }
+  .solar-system-overview .image {
+    height: 150px;
   }
 }
 
 /* Navigation */
 .nav-wrapper {
   border: solid 1px var(--color-primary);
+  height: fit-content;
 }
 .nav-wrapper h3 {
   background: repeating-linear-gradient(0deg, var(--color-secondary), var(--color-secondary) 1px, var(--color-primary) 1px, var(--color-primary) 2px);
@@ -165,7 +171,7 @@ header {
   margin-left: 5px;
   -webkit-font-smoothing: none;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   .nav-wrapper {
     width: 25%;
     order: 2;
@@ -197,7 +203,7 @@ ul.nav li {
   padding: var(--sp-base);
   border-bottom: solid 1px var(--color-primary);
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   ul.nav {
     display: block;
   }
@@ -235,12 +241,12 @@ section.solar-system-objects article.visible {
   flex-wrap: wrap;
   animation: blink 0.1s ease-in-out 2;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   section.planets,
   section.moons,
   section.solar-system-objects {
     order: 3;
-    width: 45%;
+    width: 40%;
   }
   section.planets article,
   section.moons article,
@@ -255,7 +261,7 @@ footer {
   margin: calc(var(--sp-base) * 2) 0;
   text-align: center;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   footer {
     order: 4;
   }
@@ -265,22 +271,25 @@ footer {
 .nav-header {
   cursor: pointer;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   font-size: 14pt;
 }
-.nav-header .explore-object {
-  text-transform: uppercase;
-}
-.nav-header .explore-object:before {
+.nav-header .icon::before {
   content: "\eba5";
   font-family: "Material Symbols Outlined";
   transform: rotate(45deg);
   font-size: 30px;
   margin-left: 10px;
-  margin-right: 10px;
   margin-top: -10px;
+  display: block;
+  width: 30px;
+  height: 30px;
   float: left;
   -webkit-font-smoothing: none;
+}
+.nav-header .explore-object {
+  text-transform: uppercase;
 }
 
 article {
@@ -327,14 +336,10 @@ article > ul > li {
 article:hover .image {
   mix-blend-mode: normal;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 740px) {
   article .image {
-    width: 300px;
-    height: 250px;
-    margin-top: -20px;
-  }
-  article > ul {
-    width: calc(100% - 280px);
+    width: 200px;
+    height: 200px;
   }
   article > p {
     background-color: var(--color-black-transparent);
