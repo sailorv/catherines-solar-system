@@ -330,8 +330,9 @@ article > p {
 article > ul {
   order: 2;
   margin: 0;
+  margin-left: var(--sp-base);
   padding: 10px;
-  list-style: ">";
+  list-style: "> ";
   width: calc(100% - 180px);
 }
 article > ul > li {
