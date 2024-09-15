@@ -347,12 +347,6 @@ article {
         }
     }
 
-    &:hover {
-        .image {
-            mix-blend-mode: normal;
-        }
-    }
-
     @media screen and (min-width: 740px) {
         .image {
             width: 200px;

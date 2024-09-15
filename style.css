@@ -338,9 +338,6 @@ article > ul {
 article > ul > li {
   margin-bottom: 8px;
 }
-article:hover .image {
-  mix-blend-mode: normal;
-}
 @media screen and (min-width: 740px) {
   article .image {
     width: 200px;
